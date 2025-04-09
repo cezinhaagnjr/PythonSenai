@@ -1,0 +1,63 @@
+estoque = {}
+
+def adicionar_produto():
+    codigo = input("Digite o código do produto: ")
+    if codigo in estoque:
+        print("Produto já existe. Atualizando quantidade.")
+        quantidade = int(input("Digite a quantidade para adicionar: "))
+        estoque[codigo]['quantidade'] += quantidade
+    else:
+        nome = input("Digite o nome do produto: ")
+        quantidade = int(input("Digite a quantidade: "))
+        estoque[codigo] = {'nome': nome, 'quantidade': quantidade}
+    print("Produto adicionado/atualizado com sucesso!\n")
+
+def remover_produto():
+    codigo = input("Digite o código do produto a ser removido: ")
+    if codigo in estoque:
+        del estoque[codigo]
+        print("Produto removido com sucesso!\n")
+    else:
+        print("Produto não encontrado.\n")
+
+def listar_produtos():
+    if not estoque:
+        print("Estoque vazio.\n")
+        return
+    print("\nProdutos no estoque:")
+    for codigo, info in estoque.items():
+        print(f"Código: {codigo} | Nome: {info['nome']} | Quantidade: {info['quantidade']}")
+    print()
+
+def buscar_produto():
+    codigo = input("Digite o código do produto para buscar: ")
+    if codigo in estoque:
+        info = estoque[codigo]
+        print(f"Produto encontrado - Nome: {info['nome']}, Quantidade: {info['quantidade']}\n")
+    else:
+        print("Produto não encontrado.\n")
+
+# Menu principal
+while True:
+    print("=== Gerenciador de Estoque ===")
+    print("1. Adicionar produto")
+    print("2. Remover produto")
+    print("3. Listar produtos")
+    print("4. Buscar produto")
+    print("5. Sair")
+
+    opcao = input("Escolha uma opção (1-5): ")
+
+    if opcao == '1':
+        adicionar_produto()
+    elif opcao == '2':
+        remover_produto()
+    elif opcao == '3':
+        listar_produtos()
+    elif opcao == '4':
+        buscar_produto()
+    elif opcao == '5':
+        print("Saindo do sistema. Até mais!")
+        break
+    else:
+        print("Opção inválida. Tente novamente.\n")
