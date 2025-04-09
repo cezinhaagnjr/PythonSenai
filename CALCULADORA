@@ -1,0 +1,48 @@
+# Funções para as operações básicas
+def soma(a, b):
+    return a + b
+
+def subtracao(a, b):
+    return a - b
+
+def multiplicacao(a, b):
+    return a * b
+
+def divisao(a, b):
+    if b != 0:
+        return a / b
+    else:
+        return "Erro: Divisão por zero!"
+
+
+def calculadora():
+    while True:
+        
+        try:
+            num1 = float(input("Digite o primeiro número: "))
+            
+            num2 = float(input("Digite o segundo número: "))
+            operacao = input("Digite a operação (+, -, *, /) ou 'sair' para encerrar: ").strip()
+            
+            if operacao == 'sair':
+                print("Obrigado por usar a calculadora!")
+                break
+
+            
+            if operacao == '+':
+                resultado = soma(num1, num2)
+            elif operacao == '-':
+                resultado = subtracao(num1, num2)
+            elif operacao == '*':
+                resultado = multiplicacao(num1, num2)
+            elif operacao == '/':
+                resultado = divisao(num1, num2)
+            else:
+                print("Operação inválida. Tente novamente.")
+                continue
+            
+            print(f"O resultado de {num1} {operacao} {num2} é: {resultado}")
+        except ValueError:
+            print("Entrada inválida! Por favor, insira números válidos.")
+
+calculadora()
